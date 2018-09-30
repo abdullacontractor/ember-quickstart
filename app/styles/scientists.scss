@@ -1,0 +1,11 @@
+.scientists {
+  &__heading {
+    display: flex;
+    align-items: center;
+  }
+  &__heading-icon {
+    width: 35px;
+    height: 35px;
+    padding-right: 10px;
+  }
+}
