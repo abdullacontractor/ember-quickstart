@@ -4,7 +4,14 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
-    // Add options here
+    'ember-service-worker': {
+      registrationStrategy: 'inline'
+    },
+    'esw-cache-fallback': {
+      patterns: [
+        'https://wt-338cb734ff2c818318cae0dffd078606-0.sandbox.auth0-extend.com/ember-quickstart/(.+)'
+      ],
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated
