@@ -10,3 +10,5 @@
 {{#each model as |scientist|}}
   <p>{{scientist.name}}</p>
 {{/each}}
+{{input value=newScientist}}
+<button type="button" name="button" onclick={{action "addScientist"}}>Add</button>

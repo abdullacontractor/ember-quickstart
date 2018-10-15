@@ -1,13 +1,31 @@
 // Get our dependencies
 var app = new (require('express'))();
 var wt = require('webtask-tools');
+var bodyParser  = require('body-parser');
 
-// Define the events route which will retrieve a list of all events
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// Define the scientists route which will retrieve a list of all scientists
 app.get('/scientists', function(req, res){
     req.webtaskContext.storage.get(function (error, data) {
         if (error) return res.send(error);
         res.json({ scientist: data });
     });
+})
+
+// Define the scientists route which will allow additions to the scientists list
+app.post('/scientists', function(req, res){
+  req.webtaskContext.storage.get(function (error, data) {
+      if (error) return cb(error);
+      newScientist = req.body.scientist;
+      newScientist.id = data[(data.length - 1)].id + 1;
+      data.push(newScientist);
+      req.webtaskContext.storage.set(data, function (error) {
+        if (error) return cb(error);
+        res.json({ scientist: newScientist, modelName: 'scientist' });
+      });
+  });
 })
 
 // Once our Webtask is live, we'll hit this route once, to seed our event database
