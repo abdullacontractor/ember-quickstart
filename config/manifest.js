@@ -19,6 +19,11 @@ module.exports = function() {
         "sizes": "192x192",
         "type":"image/png"
       },
+      {
+        "src": "/assets/icons/atom.png",
+        "sizes": "512x512",
+        "type":"image/png"
+      },
     ],
 
     apple: {
