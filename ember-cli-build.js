@@ -9,6 +9,7 @@ module.exports = function(defaults) {
     },
     'esw-cache-fallback': {
       patterns: [
+        '/',
         'https://wt-338cb734ff2c818318cae0dffd078606-0.sandbox.auth0-extend.com/ember-quickstart/(.+)'
       ],
     },
